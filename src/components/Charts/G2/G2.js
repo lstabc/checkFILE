@@ -10,9 +10,6 @@ const { Chart } = BizCharts;
  */
 @resizeMe({ refreshRate: 50 })
 class Charts extends PureComponent {
-   onGetG2Instance = chart => {
-     this.chart = chart;
-   }
   render() {
     const { size, children, ...otherProps } = this.props;
     const { width, height } = size;
@@ -32,5 +29,5 @@ class Charts extends PureComponent {
     );
   }
 }
-BizCharts.Chart = Charts;  //此处有问题啊
+BizCharts.Chart = Charts;
 export default BizCharts;

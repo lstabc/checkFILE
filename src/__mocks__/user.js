@@ -17,10 +17,11 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
   // fetchMock.mock(/httpbin.org\/post/, {/* response */}, {/* options */});
 
   return {
-    '/api/user/login': (options) => {
+    '/api/login': (options) => {
       if (options.body) {
         const user = JSON.parse(options.body);
-        if (user.userName === 'admin' && user.password === 'admin') {
+        if (user.username === 'admin' && user.password === 'admin') {
+          console.log('options到底是什么呢？',options);
           return toSuccess(mock({
             'userName': 'admin',                // 用户名
             'name': '@cname',                   // 中文名称
@@ -38,7 +39,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       }
     },
     '/api/user/register': options => toSuccess(),
-    '/api/user/menu': options => toSuccess([
+    '/api/sysPermission/getAllMenuList': options => toSuccess([
       {
         name: '仪表盘',
         icon: 'dashboard',

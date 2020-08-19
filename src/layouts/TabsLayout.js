@@ -1,7 +1,7 @@
 import './styles/tabs.less';
 import React from 'react';
 import { Layout, Tabs, Dropdown, Button, Menu, Icon } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../components/BaseComponent';
 import { Switch, Route } from 'dva/router';
 import NotFound from 'components/Pages/404';
 

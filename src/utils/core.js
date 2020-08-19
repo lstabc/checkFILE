@@ -27,7 +27,9 @@ export const dynamicWrapper = (app, models, component) =>
 export const createRoutes = (app, routesConfig) => {
   return (
     <Switch>
-      {routesConfig(app).map(config => createRoute(app, () => config))}
+      {routesConfig(app).map(config => {
+        return createRoute(app, () => config)
+        })}
     </Switch>
   );
 };

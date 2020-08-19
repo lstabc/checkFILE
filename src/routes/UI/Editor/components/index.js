@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout, Button, message } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Editor from 'components/Editor';
 import Panel from 'components/Panel';
 const { Content } = Layout;

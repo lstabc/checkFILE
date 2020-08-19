@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import BannerMng from 'components/BannerMng';
 const { Content } = Layout;
 

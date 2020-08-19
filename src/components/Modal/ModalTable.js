@@ -20,7 +20,7 @@ class ModalTable extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { dataItems, visible } = this.props;
 
     if (visible) {

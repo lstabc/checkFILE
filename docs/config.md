@@ -21,7 +21,7 @@ const notice = antNotice;
 
     // 可跟据接口需求自定义头部信息，每次请求头部都会带着这些参数
     withHeaders: () => ({
-      token: store.getStore("token"),
+      token: store.getStore("user").token,
     }),
 
     /**

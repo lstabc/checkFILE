@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout, Row, Col } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Panel from 'components/Panel';
 import TransferTree from 'components/TransferTree';
-import $$ from 'cmn-utils';
+import {doSearch} from '../../../../api';
 const { Content } = Layout;
 
 @connect(({ transferTree, loading }) => ({
@@ -35,9 +35,9 @@ export default class extends BaseComponent {
     });
   };
 
-  onAsyncSearch = searchText => {
-    return $$.post('/tree/getAsyncSearchData', {search: searchText}).then(({data}) => data);
-  }
+  onAsyncSearch = (searchText) => doSearch(searchText)
+  
+
 
   render() {
     const { dataSource, asyncDataSource } = this.props.transferTree;

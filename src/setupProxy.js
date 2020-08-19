@@ -5,23 +5,24 @@ const proxy = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    proxy('/api/sub', {
-      target: 'http://localhost:8080',
-      changeOrigin: true,
+    proxy('/api/123', {
+      target: 'http://localhost:3000',
+      changeOrigin: false,
       pathRewrite: {
-        '^/api': ''
+        '^/api': '/api/crud'
       }
     })
   );
-  // app.use(
-  //   proxy('/api', {
-  //     target: 'http://aaa:1000',
-  //     changeOrigin: true,
-  //     pathRewrite: {
-  //       '^/api': ''
-  //     }
-  //   })
-  // );
+  app.use(
+    proxy('/api', {
+      target: 'http://localhost:8888',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    })
+  );
+
   // app.use(
   //   proxy('/xxx', {
   //     target: 'http://bbb:2000',

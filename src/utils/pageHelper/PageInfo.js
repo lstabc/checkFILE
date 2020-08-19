@@ -8,7 +8,7 @@ export default class PageInfo {
   pageNum = 1;
 
   // 每页数量
-  pageSize = 10;
+  pageSize = 20;
 
   // 当前页的数量
   size = 0;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Upload } from 'antd';
 import $$ from 'cmn-utils';
 import config from '@/config';
+import store from 'cmn-utils/lib/store';
 // 从全局配置里获取参数
 const request = config.request || {};
 

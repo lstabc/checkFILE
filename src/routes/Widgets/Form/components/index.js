@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Layout, Row, Col, Button } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Panel from 'components/Panel';
 import Form from 'components/Form';
-import PageHelper from '@/utils/pageHelper';
-import $$ from 'cmn-utils';
+import {doLoadTableData,AutoCompleteData} from '../../../../api';
 import {
   columns1,
   columns2,
@@ -59,24 +58,12 @@ export default class extends BaseComponent {
     });
   };
 
-  onLoadTableData = pageInfo => {
-    return $$.post('/datatable/getList', PageHelper.requestFormat(pageInfo))
-      .then(resp => {
-        return PageHelper.responseFormat(resp);
-      })
-      .catch(e => console.error(e));
-  };
+  onLoadTableData = (pageInfo) => doLoadTableData(pageInfo);
+  
 
-  onLoadAutoCompleteData = value => {
-    return new Promise((resolve, reject) => {
-      $$.post('/form/autoComplete', value)
-        .then(resp => {
-          const { data } = resp;
-          resolve(data.list);
-        })
-        .catch(e => reject(e)); // reject stop loading
-    });
-  };
+  onLoadAutoCompleteData = value => AutoCompleteData(value)
+
+
 
   render() {
     const { treeData } = this.props.form;

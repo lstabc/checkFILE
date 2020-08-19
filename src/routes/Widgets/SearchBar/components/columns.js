@@ -201,7 +201,7 @@ export const columns6 = [
       render: (record, form) => {
         // ...
         const { getFieldDecorator } = form;
-        return getFieldDecorator('userName', {
+        return getFieldDecorator('username', {
           rules: [{ required: true, message: '请输入用户名!' }]
         })(
           <Input

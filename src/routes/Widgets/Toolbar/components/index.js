@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout, Button, Icon } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Panel from 'components/Panel';
 import Toolbar from 'components/Toolbar';
 import SearchBar from 'components/SearchBar';

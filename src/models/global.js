@@ -1,5 +1,5 @@
-import $$ from 'cmn-utils';
 import modelEnhance from '@/utils/modelEnhance';
+import {getMenu} from '../api'
 
 export default modelEnhance({
   namespace: 'global',
@@ -11,8 +11,8 @@ export default modelEnhance({
 
   effects: {
     *getMenu({ payload }, { call, put }) {
-      const { status, data } = yield call(getMenu, payload);
-      if (status) {
+      const { code, data } = yield call(getMenu, payload);
+      if (code !== null && code === 200) {
         const loopMenu = (menu, pitem = {}) => {
           menu.forEach(item => {
             if (pitem.path) {
@@ -53,8 +53,4 @@ export function getFlatMenu(menus) {
     menu.push(item);
   });
   return menu;
-}
-
-export async function getMenu(payload) {
-  return $$.post('/user/menu', payload);
 }

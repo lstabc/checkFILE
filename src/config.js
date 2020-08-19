@@ -13,7 +13,7 @@ export default {
   /**
    * HTML的title模板
    */
-  htmlTitle: 'DBAdmin - {title}',
+  htmlTitle: 'JkqDBC - {title}',
   
   /**
    * 系统通知
@@ -26,20 +26,20 @@ export default {
 
     // 每次请求头部都会带着这些参数
     withHeaders: () => ({
-      token: store.getStore("token"),
+      token : store.getStore("user")? store.getStore("user").token : "",
     }),
 
     /**
      * 因为modelEnhance需要知道服务器反回的数据，
      * 什么样的是成功，什么样的是失败，如
-     * {status: true, data: ...} // 代表成功
-     * {status: false, message: ...} // 代表失败
+     * {code: true, data: ...} // 代表成功
+     * {code: false, message: ...} // 代表失败
      * 实际中应该通过服务端反回的response中的
      * 成功失败标识来进行区分
      */
     afterResponse: response => {
-      const { status, message } = response;
-      if (status) {
+      const { code, message } = response;
+      if (code !== null && code === 200) {
         return response;
       } else {
         throw new Error(message);
@@ -72,29 +72,30 @@ export default {
     // 格式化要发送到后端的数据
     requestFormat: pageInfo => {
       const { pageNum, pageSize, filters, sorts } = pageInfo;
+      //console.log('sorts 是什么？',sorts);
       return {
-        currentPage: pageNum,
-        showCount: pageSize,
-        sortMap: sorts,
+        pageIndex: pageNum,
+        pageSize: pageSize,
+        pageSorts: [sorts],
         paramMap: filters
       };
     },
 
     // 格式化从后端反回的数据
     responseFormat: resp => {
+      //console.log(resp);
       const {
-        currentPage,
-        showCount,
-        totalResult,
-        dataList,
-        totalPage
+        pageIndex,
+        pageSize,
+        total,
+        records
       } = resp.data;
       return {
-        pageNum: currentPage,
-        pageSize: showCount,
-        total: totalResult,
-        totalPages: totalPage,
-        list: dataList
+        pageNum: pageIndex,
+        pageSize: pageSize,
+        total: total,
+        totalPages: Math.ceil(total/pageSize),
+        list: records
       };
     }
   },
@@ -122,12 +123,12 @@ export default {
    */
   mock: {
     toSuccess: response => ({
-      status: true,
+      code: 200,
       data: response
     }),
 
     toError: message => ({
-      status: false,
+      code: 403,
       message: message
     })
   }

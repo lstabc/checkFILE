@@ -65,6 +65,10 @@ export default ({
   if (getPopupContainer) {
     props.getPopupContainer = getPopupContainer;
   }
+// console.log('propspropspropspropspropsprops',props);
+// console.log('dictdictdictdictdictdict',dict);
+// console.log('namenamenamenamenamenamename',name);
+// console.log('formFieldOptionsformFieldOptionsformFieldOptionsformFieldOptions',formFieldOptions);
 
   return getFieldDecorator(name, formFieldOptions)(
     <Select {...props}>

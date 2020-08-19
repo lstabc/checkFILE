@@ -2,9 +2,10 @@
  * 模拟CRUD数据
  */
 export default ({fetchMock, delay, mock, toSuccess, toError}) => {
+  console.log('程序到这了来取数据');
   return {
     // 表格带分页
-    '/api/crud/getList': (options) => {
+    '/crud/getList': (options) => {
       const body = JSON.parse(options.body);
       const currentPage = body.currentPage;
       const idbase = (currentPage - 1) * 10 + 1;

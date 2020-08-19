@@ -1,5 +1,6 @@
 import { routerRedux } from 'dva/router';
-import { login } from '../service';
+import {login} from '../../../api';
+//import { login } from '../service';
 import $$ from 'cmn-utils';
 
 export default {
@@ -24,8 +25,8 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       try {
-        const { status, message, data } = yield call(login, payload);
-        if (status) {
+        const { code, message, data } = yield call(login, payload);
+         if (code !== null && code === 200) {
           $$.setStore('user', data);
           yield put(routerRedux.replace('/'));
         } else {
@@ -36,7 +37,8 @@ export default {
         }
       } catch (e) {
         yield put({
-          type: 'loginError'
+          type: 'loginError',
+          payload: e.message
         });
       }
     },

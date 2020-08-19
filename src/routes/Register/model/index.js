@@ -1,5 +1,5 @@
 import modelEnhance from '@/utils/modelEnhance';
-import { register } from '../service';
+import { register } from '../../../api';
 
 export default modelEnhance({
   namespace: 'register',

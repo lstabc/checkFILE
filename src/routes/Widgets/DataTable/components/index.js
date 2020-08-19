@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Layout, Row, Col, Tree } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Panel from 'components/Panel';
 import SideLayout from 'components/SideLayout';
 import DataTable, { Editable } from 'components/DataTable';

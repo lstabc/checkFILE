@@ -32,6 +32,8 @@ import Alerts from './UI/Alerts';
 import Button from './UI/Button';
 import CRUD from './Business/CRUD';
 import CRUDDetail from './Business/CRUD/routers/Detail';
+import sysUser from './sys_manage/user_manage'
+import sysRole from './sys_manage/role_manage'
 
 /**
  * 主路由配置
@@ -42,7 +44,7 @@ import CRUDDetail from './Business/CRUD/routers/Detail';
  * childRoutes 所有子路由
  * NotFound 路由要放到最下面，当所有路由当没匹配到时会进入这个页面
  */
-const routesConfig = app => [
+const routesConfig = app =>[
   {
     path: '/sign',
     title: '登录',
@@ -88,9 +90,11 @@ const routesConfig = app => [
       Print(),
       Banner(app),
       LevelRoute(app),
-      NotFound()
+      sysUser(app),
+      sysRole(app),
+      NotFound(),
     ]
   }
-];
+]
 
 export default app => createRoutes(app, routesConfig);

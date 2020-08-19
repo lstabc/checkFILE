@@ -134,14 +134,20 @@ class DataTable extends Component {
 
   handleTableChange = (pagination, filters, sorter) => {
     let pageNum = pagination.current || pagination;
-
+    console.log('sortersortersortersortersorter',sorter);
     let sortMap = sorter.field
       ? {
           [sorter.field]: sorter.order === 'ascend' ? 'asc' : 'desc'
         }
       : sorter;
+     // {column: 'role_id', asc: false}
+    console.log('sortMapsortMapsortMapsortMapsortMap',sortMap);
+    let sortMap1 = {
+      column: Object.keys(sortMap)[0],
+      asc:sorter.order === 'ascend'? false : true
+    }
     this.props.onChange &&
-      this.props.onChange({ pageNum, filters, sorter: sortMap });
+      this.props.onChange({ pageNum, filters, sorter: sortMap1 });
   };
 
   onShowSizeChange = (pageNum, pageSize) => {
@@ -221,6 +227,7 @@ class DataTable extends Component {
         return {
           title: col.title,
           dataIndex: col.name,
+          sorter:col.sorter,
           ...item
         };
       })
@@ -276,6 +283,7 @@ class DataTable extends Component {
     };
 
     this._rowKey = rowKey || colRowKey;
+    //console.log('colscols成为了什么',cols);
 
     return (
       <div className={classname}>

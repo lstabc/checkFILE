@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout, Tabs, Tag } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import CSSAnimate from 'components/CSSAnimate';
 import Icon from 'components/Icon';
 import './index.less';

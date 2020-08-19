@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link, Switch } from 'dva/router';
 import { Layout } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import './index.less';
 const { Content, Header } = Layout;
 

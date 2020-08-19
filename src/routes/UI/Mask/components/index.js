@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout, Button } from 'antd';
-import BaseComponent from 'components/BaseComponent';
+import BaseComponent from '../../../../components/BaseComponent';
 import Panel from 'components/Panel';
 import Mask from 'components/Mask';
 import avatar from 'assets/images/avatar.jpg';

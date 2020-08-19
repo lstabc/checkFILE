@@ -49,7 +49,7 @@ export default class CardLayout extends React.PureComponent {
     ElementQueries.init();
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // 检查有户是否登录
     const user = $$.getStore('user');
     if (!user) {
